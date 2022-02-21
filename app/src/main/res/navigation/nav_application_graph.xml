@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_application_graph"
+    app:startDestination="@id/breathFragment">
+
+    <fragment
+        android:id="@+id/aboutFragment"
+        android:name="com.example.timerbreathing.presentation.fragments.AboutFragment"
+        android:label="fragment_about"
+        tools:layout="@layout/fragment_about" />
+    <fragment
+        android:id="@+id/aboutTimerFragment"
+        android:name="com.example.timerbreathing.presentation.fragments.AboutTimerFragment"
+        android:label="fragment_about_timer"
+        tools:layout="@layout/fragment_about_timer" />
+    <fragment
+        android:id="@+id/balanceFragment"
+        android:name="com.example.timerbreathing.presentation.fragments.BalanceFragment"
+        android:label="fragment_balance"
+        tools:layout="@layout/fragment_balance" />
+    <fragment
+        android:id="@+id/breathFragment"
+        android:name="com.example.timerbreathing.presentation.fragments.BreathFragment"
+        android:label="fragment_breath"
+        tools:layout="@layout/fragment_breath">
+        <action
+            android:id="@+id/action_breathFragment_to_infoFragment"
+            app:destination="@id/infoFragment" />
+        <action
+            android:id="@+id/action_breathFragment_to_pickerDialogFragment"
+            app:destination="@id/pickerDialogFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/cheerfulnessFragment"
+        android:name="com.example.timerbreathing.presentation.fragments.CheerfulnessFragment"
+        android:label="fragment_cheerfulness"
+        tools:layout="@layout/fragment_cheerfulness" />
+    <fragment
+        android:id="@+id/recomendationsFragment"
+        android:name="com.example.timerbreathing.presentation.fragments.RecomendationsFragment"
+        android:label="fragment_recomendations"
+        tools:layout="@layout/fragment_recomendations" />
+    <fragment
+        android:id="@+id/infoFragment"
+        android:name="com.example.timerbreathing.presentation.fragments.InfoFragment"
+        android:label="fragment_info"
+        tools:layout="@layout/fragment_info">
+        <action
+            android:id="@+id/action_infoFragment_to_schemeBreathFragment"
+            app:destination="@id/schemeBreathFragment" />
+        <action
+            android:id="@+id/action_infoFragment_to_aboutTimerFragment"
+            app:destination="@id/aboutTimerFragment" />
+        <action
+            android:id="@+id/action_infoFragment_to_recomendationsFragment"
+            app:destination="@id/recomendationsFragment" />
+        <action
+            android:id="@+id/action_infoFragment_to_aboutFragment"
+            app:destination="@id/aboutFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/relaxFragment"
+        android:name="com.example.timerbreathing.presentation.fragments.RelaxFragment"
+        android:label="fragment_relax"
+        tools:layout="@layout/fragment_relax" />
+    <fragment
+        android:id="@+id/schemeBreathFragment"
+        android:name="com.example.timerbreathing.presentation.fragments.SchemeBreathFragment"
+        android:label="fragment_scheme_breath"
+        tools:layout="@layout/fragment_scheme_breath">
+        <action
+            android:id="@+id/action_schemeBreathFragment_to_relaxFragment"
+            app:destination="@id/relaxFragment" />
+        <action
+            android:id="@+id/action_schemeBreathFragment_to_balanceFragment"
+            app:destination="@id/balanceFragment" />
+        <action
+            android:id="@+id/action_schemeBreathFragment_to_cheerfulnessFragment"
+            app:destination="@id/cheerfulnessFragment" />
+    </fragment>
+    <dialog
+        android:id="@+id/pickerDialogFragment"
+        android:name="com.example.timerbreathing.presentation.fragments.PickerDialogFragment"
+        android:label="fragment_picker_dialog"
+        tools:layout="@layout/fragment_picker_dialog" />
+
+</navigation>
