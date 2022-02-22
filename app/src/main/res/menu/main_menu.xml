@@ -4,15 +4,15 @@
 <item
     android:title="Info"
     android:id="@+id/info"
-    android:icon="@android:drawable/ic_dialog_info"
+    android:icon="@drawable/ic_ic24_info"
     app:showAsAction="ifRoom"
     android:orderInCategory="2"
     />
     <item
         android:title="Metronom"
         android:id="@+id/metronom"
-        android:icon="@android:drawable/ic_dialog_info"
+        android:icon="@drawable/ic_ic24_metro"
         app:showAsAction="ifRoom"
-        android:orderInCategory="2"
+        android:orderInCategory="1"
         />
 </menu>
