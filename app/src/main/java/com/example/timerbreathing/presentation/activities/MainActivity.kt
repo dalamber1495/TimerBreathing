@@ -2,6 +2,7 @@ package com.example.timerbreathing.presentation.activities
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.widget.Toolbar
 import com.example.timerbreathing.R
 import dagger.hilt.android.AndroidEntryPoint
 
