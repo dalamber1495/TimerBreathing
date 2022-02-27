@@ -17,6 +17,7 @@ import androidx.core.os.bundleOf
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.Navigation
 import androidx.navigation.fragment.findNavController
 import com.example.timerbreathing.R
 import com.example.timerbreathing.data.ExerciseParameters
@@ -110,8 +111,10 @@ class BreathFragment : Fragment(R.layout.fragment_breath) {
                     onItemSelected(R.id.metronom)
                     metronomeActivate = !metronomeActivate
                     if (metronomeActivate) {
-                        Toast.makeText(context, "Metronome is Active", Toast.LENGTH_SHORT).show()
-                    }
+                        Toast.makeText(context, "Metronome was activated", Toast.LENGTH_SHORT).show()
+                    }else
+                        Toast.makeText(context, "Metronome was deactivated", Toast.LENGTH_SHORT).show()
+
                     super.onOptionsItemSelected(it)
                 }
                 else -> {
@@ -210,10 +213,15 @@ class BreathFragment : Fragment(R.layout.fragment_breath) {
         }
     }
 
+    @Synchronized
     private fun openPicker(resValue: Int) {
-        findNavController().navigate(
-            R.id.action_breathFragment_to_pickerDialogFragment,
-            bundleOf(Pair(Constants.RESOURCE, resValue))
-        )
+        try {
+            findNavController().navigate(
+                R.id.action_breathFragment_to_pickerDialogFragment,
+                bundleOf(Pair(Constants.RESOURCE, resValue))
+            )
+        }catch (e:IllegalArgumentException){
+
+        }
     }
 }

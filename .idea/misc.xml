@@ -4,13 +4,19 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/AndroidStudioProject/timerbreathing/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.2703125" />
+        <entry key="..\:/AndroidStudioProject/timerbreathing/app/src/main/res/drawable/another_roundedbutton.xml" value="0.2703125" />
+        <entry key="..\:/AndroidStudioProject/timerbreathing/app/src/main/res/drawable/background_level_list.xml" value="0.2703125" />
+        <entry key="..\:/AndroidStudioProject/timerbreathing/app/src/main/res/drawable/gradient_background.xml" value="0.2703125" />
+        <entry key="..\:/AndroidStudioProject/timerbreathing/app/src/main/res/drawable/ic_frame.xml" value="0.264" />
+        <entry key="..\:/AndroidStudioProject/timerbreathing/app/src/main/res/drawable/ic_ic24_info.xml" value="0.2703125" />
+        <entry key="..\:/AndroidStudioProject/timerbreathing/app/src/main/res/drawable/ic_ic24_metro.xml" value="0.2703125" />
         <entry key="..\:/AndroidStudioProject/timerbreathing/app/src/main/res/drawable/ic_launcher_background.xml" value="0.14635416666666667" />
         <entry key="..\:/AndroidStudioProject/timerbreathing/app/src/main/res/drawable/oval_button.xml" value="0.2703125" />
         <entry key="..\:/AndroidStudioProject/timerbreathing/app/src/main/res/drawable/roundedbutton.xml" value="0.2703125" />
         <entry key="..\:/AndroidStudioProject/timerbreathing/app/src/main/res/layout/activity_main.xml" value="0.16" />
         <entry key="..\:/AndroidStudioProject/timerbreathing/app/src/main/res/layout/fragment_about.xml" value="0.17300724637681159" />
         <entry key="..\:/AndroidStudioProject/timerbreathing/app/src/main/res/layout/fragment_about_timer.xml" value="0.17300724637681159" />
-        <entry key="..\:/AndroidStudioProject/timerbreathing/app/src/main/res/layout/fragment_breath.xml" value="0.1" />
+        <entry key="..\:/AndroidStudioProject/timerbreathing/app/src/main/res/layout/fragment_breath.xml" value="0.264" />
         <entry key="..\:/AndroidStudioProject/timerbreathing/app/src/main/res/layout/fragment_cheerfulness.xml" value="0.17300724637681159" />
         <entry key="..\:/AndroidStudioProject/timerbreathing/app/src/main/res/layout/fragment_info.xml" value="0.17300724637681159" />
         <entry key="..\:/AndroidStudioProject/timerbreathing/app/src/main/res/layout/fragment_picker_dialog.xml" value="0.136" />
