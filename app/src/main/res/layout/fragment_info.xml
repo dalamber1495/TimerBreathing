@@ -1,14 +1,86 @@
 <?xml version="1.0" encoding="utf-8"?>
+
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".presentation.fragments.InfoFragment">
+    android:background="@drawable/gradient_background">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <androidx.constraintlayout.widget.ConstraintLayout
+
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        tools:context=".presentation.fragments.InfoFragment">
 
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:navigationIcon="@drawable/ic_icon_back"
+            android:background="@android:color/transparent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/scheme_brth"
+            style="@style/infoFragmentTextStyle"
+            android:layout_width="340dp"
+            android:layout_height="140dp"
+            android:layout_marginTop="220dp"
+            android:elevation="8dp"
+            android:background="@drawable/oval_button2"
+            android:text="@string/scheme_breathing"
+            app:layout_constraintHorizontal_bias="0.507"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/about_tmr"
+            style="@style/infoFragmentTextStyle"
+            android:layout_width="340dp"
+            android:layout_height="60dp"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/oval_button_white"
+            android:text="@string/about_timer"
+            app:layout_constraintLeft_toLeftOf="@id/scheme_brth"
+            app:layout_constraintRight_toRightOf="@id/scheme_brth"
+            app:layout_constraintTop_toBottomOf="@id/scheme_brth" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/recomentations"
+            style="@style/infoFragmentTextStyle"
+            android:layout_width="340dp"
+            android:layout_height="60dp"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/oval_button_white"
+
+            android:text="@string/recomendations"
+            app:layout_constraintLeft_toLeftOf="@id/about_tmr"
+            app:layout_constraintRight_toRightOf="@id/about_tmr"
+            app:layout_constraintTop_toBottomOf="@id/about_tmr" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/about_auth"
+            style="@style/infoFragmentTextStyle"
+            android:layout_width="340dp"
+            android:layout_height="60dp"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/oval_button_white"
+
+            android:text="@string/about_author"
+            app:layout_constraintLeft_toLeftOf="@id/recomentations"
+            app:layout_constraintRight_toRightOf="@id/about_tmr"
+            app:layout_constraintTop_toBottomOf="@id/recomentations" />
+
+        <View
+            android:layout_width="wrap_content"
+            android:layout_height="317dp"
+            android:background="@drawable/ic_frame_info"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </FrameLayout>

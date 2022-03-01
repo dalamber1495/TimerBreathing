@@ -1,6 +1,5 @@
 <resources>
     <string name="app_name">TimerBreathing</string>
-    <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="time_training">Время тренировки</string>
     <string name="breath">Вдох</string>
@@ -8,4 +7,11 @@
     <string name="exhalation">Выдох</string>
     <string name="stop_timer">Повторить</string>
     <string name="breathing">Дышать</string>
+    <string name="about_author">Об авторе</string>
+    <string name="recomendations">Рекомендации</string>
+    <string name="about_timer">О таймере</string>
+    <string name="scheme_breathing">Схемы дыхания</string>
+    <string name="relax">Расслабление</string>
+    <string name="balance">Баланс</string>
+    <string name="cheerfulness">Бодрость</string>
 </resources>

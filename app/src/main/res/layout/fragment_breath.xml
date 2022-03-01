@@ -26,9 +26,12 @@
             android:layout_marginTop="30dp"
             android:background="@drawable/ic_frame"
             app:layout_constraintBottom_toBottomOf="@id/progress_bar"
+            app:layout_constraintHorizontal_bias="0.502"
             app:layout_constraintLeft_toLeftOf="@id/progress_bar"
             app:layout_constraintRight_toRightOf="@id/progress_bar"
-            app:layout_constraintTop_toTopOf="@id/progress_bar" />
+            app:layout_constraintTop_toTopOf="@id/progress_bar"
+            app:layout_constraintVertical_bias="0.504" />
+
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/breath_btn"
             android:layout_width="wrap_content"
@@ -36,6 +39,7 @@
             android:layout_marginTop="104dp"
             android:width="240dp"
             android:height="60dp"
+            style="@style/infoFragmentTextStyle"
             android:background="@drawable/oval_button"
             android:elevation="8dp"
             android:text="@string/breathing"
@@ -50,6 +54,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="110dp"
+            style="@style/infoFragmentTextStyle"
             android:textSize="30sp"
             android:letterSpacing="0.07"
             android:textColor="#5A4482"
@@ -72,11 +77,15 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/breath"
+            style="@style/infoFragmentTextStyle"
+            android:textSize="14sp"
             app:layout_constraintEnd_toEndOf="@+id/time_breath_btn"
             app:layout_constraintStart_toStartOf="@+id/time_breath_btn"
             app:layout_constraintTop_toTopOf="@+id/textView3" />
 
         <TextView
+            style="@style/infoFragmentTextStyle"
+            android:textSize="14sp"
             android:id="@+id/textView3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -87,6 +96,8 @@
 
         <TextView
             android:id="@+id/textView4"
+            style="@style/infoFragmentTextStyle"
+            android:textSize="14sp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/exhalation"
@@ -96,6 +107,8 @@
 
         <TextView
             android:id="@+id/textView5"
+            style="@style/infoFragmentTextStyle"
+            android:textSize="14sp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/wait"
