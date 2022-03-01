@@ -12,6 +12,7 @@ import android.view.*
 import androidx.fragment.app.Fragment
 import android.widget.TextView
 import android.widget.Toast
+import android.widget.Toolbar
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.os.bundleOf
 import androidx.lifecycle.LifecycleOwner
@@ -56,7 +57,7 @@ class BreathFragment : Fragment(R.layout.fragment_breath) {
     private val mControllerCallback = object : MediaControllerCompat.Callback() {
     }
 
-    fun onItemSelected(item: Int) {
+    private fun onItemSelected(item: Int) {
         val mediaController = MediaControllerCompat.getMediaController(requireActivity())
         when (item) {
             R.id.metronom -> {
@@ -105,16 +106,24 @@ class BreathFragment : Fragment(R.layout.fragment_breath) {
         binding = FragmentBreathBinding.bind(view)
         viewModel = ViewModelProvider(requireActivity()).get(MainViewModel::class.java)
         binding.toolbar.inflateMenu(R.menu.main_menu)
+        binding.toolbar.setNavigationOnClickListener { viewModel.startTimer() }
         binding.toolbar.setOnMenuItemClickListener {
             when (it.itemId) {
                 R.id.metronom -> {
                     onItemSelected(R.id.metronom)
                     metronomeActivate = !metronomeActivate
                     if (metronomeActivate) {
-                        Toast.makeText(context, "Metronome was activated", Toast.LENGTH_SHORT).show()
-                    }else
-                        Toast.makeText(context, "Metronome was deactivated", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(context, "Metronome was activated", Toast.LENGTH_SHORT)
+                            .show()
+                    } else
+                        Toast.makeText(context, "Metronome was deactivated", Toast.LENGTH_SHORT)
+                            .show()
 
+                    super.onOptionsItemSelected(it)
+                }
+                R.id.info -> {
+                    if (viewModel.curTimeBreath.value is TimerState.Started) viewModel.startTimer()
+                    findNavController().navigate(R.id.action_breathFragment_to_infoFragment,null)
                     super.onOptionsItemSelected(it)
                 }
                 else -> {
@@ -138,16 +147,6 @@ class BreathFragment : Fragment(R.layout.fragment_breath) {
             openPicker(R.id.time_wait2_btn)
         }
         binding.breathBtn.setOnClickListener { v ->
-//            when (viewModel.curTimeBreath.value) {
-//                is TimerState.Started -> {
-//                    (v as TextView).text = getString(R.string.breath)
-//                }
-//                is TimerState.Stopped -> {
-//                    (v as TextView).text = getString(R.string.stop_timer)
-//                }
-//                else -> {}
-//            }
-            //Здесь отправляются параметры упражнения
             viewModel.startTimer()
         }
 
@@ -155,6 +154,7 @@ class BreathFragment : Fragment(R.layout.fragment_breath) {
             when (it) {
                 is TimerState.Stopped -> {
 //                    MediaControllerCompat.getMediaController(requireActivity()).transportControls.stop()
+                    binding.toolbar.navigationIcon = null
                     viewModel.timer?.cancel()
                     binding.breathBtn.text = getString(R.string.breathing)
                     updateCountdownUI(it)
@@ -167,6 +167,7 @@ class BreathFragment : Fragment(R.layout.fragment_breath) {
                             null
                         )
                     }
+                    binding.toolbar.setNavigationIcon(R.drawable.ic_icon_back)
                     binding.progressBar.max = viewModel.immutableParameters.timeTraining.toInt()
                     binding.breathBtn.text = getString(R.string.stop_timer)
                     updateCountdownUI(it)
@@ -220,7 +221,7 @@ class BreathFragment : Fragment(R.layout.fragment_breath) {
                 R.id.action_breathFragment_to_pickerDialogFragment,
                 bundleOf(Pair(Constants.RESOURCE, resValue))
             )
-        }catch (e:IllegalArgumentException){
+        } catch (e: IllegalArgumentException) {
 
         }
     }
