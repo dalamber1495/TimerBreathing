@@ -192,6 +192,8 @@ class BreathFragment : Fragment(R.layout.fragment_breath) {
                     viewModel.timer?.cancel()
                     binding.apply {
                         breathBtn.text = getString(R.string.breathing)
+                        breathBtn.setBackgroundResource(R.drawable.oval_button)
+
                         breathContainer.setBackgroundResource(R.drawable.gradient_background)
                     }
                     updateCountdownUI(it)
@@ -219,11 +221,6 @@ class BreathFragment : Fragment(R.layout.fragment_breath) {
 
     override fun onStart() {
         super.onStart()
-        if (viewModel.curTimeBreath.value is TimerState.Started) {
-            binding.breathBtn.setBackgroundResource(R.drawable.oval_button2)
-        } else {
-            binding.breathBtn.setBackgroundResource(R.drawable.oval_button)
-        }
         mMediaBrowserCompat.connect()
 
     }
