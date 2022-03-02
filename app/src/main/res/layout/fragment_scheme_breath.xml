@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/gradient_background"
-    tools:context=".presentation.fragments.SchemeBreathFragment">
+    tools:context=".presentation.fragments.infoscreen.schemescreen.SchemeBreathFragment">
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"

@@ -20,8 +20,13 @@
         <entry key="..\:/AndroidStudioProject/timerbreathing/app/src/main/res/drawable/ic_frame_info.xml" value="0.2703125" />
         <entry key="..\:/AndroidStudioProject/timerbreathing/app/src/main/res/drawable/ic_frame_relax.xml" value="0.15572916666666667" />
         <entry key="..\:/AndroidStudioProject/timerbreathing/app/src/main/res/drawable/ic_frame_schemes.xml" value="0.2703125" />
+        <entry key="..\:/AndroidStudioProject/timerbreathing/app/src/main/res/drawable/ic_ic24_brightness_low.xml" value="0.2703125" />
+        <entry key="..\:/AndroidStudioProject/timerbreathing/app/src/main/res/drawable/ic_ic24_heart.xml" value="0.1390625" />
         <entry key="..\:/AndroidStudioProject/timerbreathing/app/src/main/res/drawable/ic_ic24_info.xml" value="0.2703125" />
+        <entry key="..\:/AndroidStudioProject/timerbreathing/app/src/main/res/drawable/ic_ic24_lungs.xml" value="0.2703125" />
         <entry key="..\:/AndroidStudioProject/timerbreathing/app/src/main/res/drawable/ic_ic24_metro.xml" value="0.2703125" />
+        <entry key="..\:/AndroidStudioProject/timerbreathing/app/src/main/res/drawable/ic_ic24_metro2.xml" value="0.190625" />
+        <entry key="..\:/AndroidStudioProject/timerbreathing/app/src/main/res/drawable/ic_ic24_stopwatch.xml" value="0.2703125" />
         <entry key="..\:/AndroidStudioProject/timerbreathing/app/src/main/res/drawable/ic_icon_back.xml" value="0.2703125" />
         <entry key="..\:/AndroidStudioProject/timerbreathing/app/src/main/res/drawable/ic_launcher_background.xml" value="0.14635416666666667" />
         <entry key="..\:/AndroidStudioProject/timerbreathing/app/src/main/res/drawable/ic_mask_group.xml" value="0.2703125" />
@@ -31,14 +36,14 @@
         <entry key="..\:/AndroidStudioProject/timerbreathing/app/src/main/res/font/ioga_font.xml" value="0.284375" />
         <entry key="..\:/AndroidStudioProject/timerbreathing/app/src/main/res/layout/activity_main.xml" value="0.16" />
         <entry key="..\:/AndroidStudioProject/timerbreathing/app/src/main/res/layout/fragment_about.xml" value="0.17300724637681159" />
-        <entry key="..\:/AndroidStudioProject/timerbreathing/app/src/main/res/layout/fragment_about_timer.xml" value="0.17300724637681159" />
+        <entry key="..\:/AndroidStudioProject/timerbreathing/app/src/main/res/layout/fragment_about_timer.xml" value="0.4" />
         <entry key="..\:/AndroidStudioProject/timerbreathing/app/src/main/res/layout/fragment_balance.xml" value="0.264" />
         <entry key="..\:/AndroidStudioProject/timerbreathing/app/src/main/res/layout/fragment_breath.xml" value="0.264" />
         <entry key="..\:/AndroidStudioProject/timerbreathing/app/src/main/res/layout/fragment_cheerfulness.xml" value="0.17300724637681159" />
         <entry key="..\:/AndroidStudioProject/timerbreathing/app/src/main/res/layout/fragment_info.xml" value="0.4" />
         <entry key="..\:/AndroidStudioProject/timerbreathing/app/src/main/res/layout/fragment_picker_dialog.xml" value="0.136" />
         <entry key="..\:/AndroidStudioProject/timerbreathing/app/src/main/res/layout/fragment_recomendations.xml" value="0.17300724637681159" />
-        <entry key="..\:/AndroidStudioProject/timerbreathing/app/src/main/res/layout/fragment_relax.xml" value="0.16" />
+        <entry key="..\:/AndroidStudioProject/timerbreathing/app/src/main/res/layout/fragment_relax.xml" value="0.4" />
         <entry key="..\:/AndroidStudioProject/timerbreathing/app/src/main/res/layout/fragment_scheme_breath.xml" value="0.176" />
         <entry key="..\:/AndroidStudioProject/timerbreathing/app/src/main/res/menu/main_menu.xml" value="0.17447916666666666" />
       </map>

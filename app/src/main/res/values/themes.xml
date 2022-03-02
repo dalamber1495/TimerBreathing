@@ -29,4 +29,13 @@
         <item name="android:textColor">@color/color6</item>
         <item name="android:letterSpacing">0.07</item>
     </style>
+    <style name="TextStyleRelax">
+        <item name="fontFamily">@font/mazzardh_extralight</item>
+        <item name="tabStyle">@id/italic</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColor">@color/color6</item>
+        <item name="android:letterSpacing">0.14</item>
+    </style>
 </resources>

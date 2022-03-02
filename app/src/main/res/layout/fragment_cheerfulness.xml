@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/gradient_background_cheerfulness"
-    tools:context=".presentation.fragments.CheerfulnessFragment">
+    tools:context=".presentation.fragments.infoscreen.schemescreen.CheerfulnessFragment">
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"
@@ -16,6 +16,17 @@
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:navigationIcon="@drawable/ic_icon_back" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/relax_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/cheerfulness"
+        android:layout_marginTop="10dp"
+        style="@style/infoFragmentTextStyle"
+        app:layout_constraintTop_toTopOf="@id/tv_container"
+        app:layout_constraintLeft_toLeftOf="@id/tv_container"
+        app:layout_constraintRight_toRightOf="@id/tv_container"/>
 
     <View
         android:layout_width="339dp"
@@ -42,7 +53,7 @@
         android:textColor="@color/white"
         android:layout_width="240dp"
         android:layout_height="60dp"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="20dp"
         android:background="@drawable/oval_button"
         android:elevation="8dp"
         android:text="@string/breathing"
