@@ -11,7 +11,7 @@
     <item
         android:title="Metronom"
         android:id="@+id/metronom"
-        android:icon="@drawable/ic_ic24_metro"
+        android:icon="@drawable/ic_ic24_metro2"
         app:showAsAction="ifRoom"
         android:orderInCategory="1"
         />

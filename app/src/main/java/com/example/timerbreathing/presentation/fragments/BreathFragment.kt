@@ -1,6 +1,9 @@
 package com.example.timerbreathing.presentation.fragments
 
+import android.annotation.SuppressLint
 import android.content.ComponentName
+import android.content.res.Resources
+import android.graphics.drawable.Drawable
 import android.net.Uri
 import android.os.Bundle
 import android.os.CountDownTimer
@@ -9,11 +12,14 @@ import android.support.v4.media.session.MediaControllerCompat
 import android.support.v4.media.session.PlaybackStateCompat
 import android.util.Log
 import android.view.*
+import android.widget.Button
 import androidx.fragment.app.Fragment
 import android.widget.TextView
 import android.widget.Toast
 import android.widget.Toolbar
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
+import androidx.core.graphics.drawable.toDrawable
 import androidx.core.os.bundleOf
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.Observer
@@ -29,12 +35,13 @@ import com.example.timerbreathing.presentation.TimerState
 import com.example.timerbreathing.presentation.viewmodels.MainViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
+const val ARG_STARTED = "isStarted"
+
 @AndroidEntryPoint
 class BreathFragment : Fragment(R.layout.fragment_breath) {
 
     private lateinit var viewModel: MainViewModel
     private lateinit var binding: FragmentBreathBinding
-
     private var metronomeActivate = false
     private lateinit var mMediaBrowserCompat: MediaBrowserCompat
     private val connectionCallback: MediaBrowserCompat.ConnectionCallback =
@@ -61,28 +68,10 @@ class BreathFragment : Fragment(R.layout.fragment_breath) {
         val mediaController = MediaControllerCompat.getMediaController(requireActivity())
         when (item) {
             R.id.metronom -> {
-//                val state = mediaController.playbackState.state
-//                Log.e("TAG", "onItemSelected: ${state}", )
-
-                // if it is not playing then what are you waiting for ? PLAY !
-//                if (state == PlaybackStateCompat.STATE_PAUSED ||
-//                    state == PlaybackStateCompat.STATE_STOPPED ||
-//                    state == PlaybackStateCompat.STATE_NONE
-//                ) {
                 mediaController.transportControls.playFromUri(
                     Uri.parse("asset:///heart_attack.mp3"),
                     null
                 )
-                //  btn.text = "Pause"
-                //    }
-                // you are playing ? knock it off !
-//                else if (state == PlaybackStateCompat.STATE_PLAYING ||
-//                    state == PlaybackStateCompat.STATE_BUFFERING ||
-//                    state == PlaybackStateCompat.STATE_CONNECTING
-//                ) {
-//                    mediaController.transportControls.stop()
-//                    //      btn.text = "Play"
-//                }
             }
         }
     }
@@ -98,10 +87,9 @@ class BreathFragment : Fragment(R.layout.fragment_breath) {
         )
     }
 
-
+    @SuppressLint("ClickableViewAccessibility")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
 
         binding = FragmentBreathBinding.bind(view)
         viewModel = ViewModelProvider(requireActivity()).get(MainViewModel::class.java)
@@ -123,7 +111,7 @@ class BreathFragment : Fragment(R.layout.fragment_breath) {
                 }
                 R.id.info -> {
                     if (viewModel.curTimeBreath.value is TimerState.Started) viewModel.startTimer()
-                    findNavController().navigate(R.id.action_breathFragment_to_infoFragment,null)
+                    findNavController().navigate(R.id.action_breathFragment_to_infoFragment, null)
                     super.onOptionsItemSelected(it)
                 }
                 else -> {
@@ -132,22 +120,68 @@ class BreathFragment : Fragment(R.layout.fragment_breath) {
             }
         }
         binding.timeExerciseTv.setOnClickListener {
-            openPicker(R.id.time_exercise_tv)
+            openPicker(
+                R.id.time_exercise_tv,
+                viewModel.curTimeBreath.value?.dataTime?.timeTraining?.toInt()?.div(60)
+            )
         }
         binding.timeBreathBtn.setOnClickListener {
-            openPicker(R.id.time_breath_btn)
+            openPicker(
+                R.id.time_breath_btn,
+                viewModel.curTimeBreath.value?.dataTime?.timeBreath?.toInt()
+            )
         }
         binding.timeWaitBtn.setOnClickListener {
-            openPicker(R.id.time_wait_btn)
+            openPicker(
+                R.id.time_wait_btn,
+                viewModel.curTimeBreath.value?.dataTime?.timeBreathDelay?.toInt()
+            )
         }
         binding.timeExhBtn.setOnClickListener {
-            openPicker(R.id.time_exh_btn)
+            openPicker(
+                R.id.time_exh_btn,
+                viewModel.curTimeBreath.value?.dataTime?.timeExhalation?.toInt()
+            )
         }
         binding.timeWait2Btn.setOnClickListener {
-            openPicker(R.id.time_wait2_btn)
+            openPicker(
+                R.id.time_wait2_btn,
+                viewModel.curTimeBreath.value?.dataTime?.timeExhalationDelay?.toInt()
+            )
         }
-        binding.breathBtn.setOnClickListener { v ->
+
+        binding.breathBtn.setOnClickListener {
             viewModel.startTimer()
+            if (viewModel.curTimeBreath.value is TimerState.Started) {
+                binding.breathBtn.setBackgroundResource(R.drawable.oval_button)
+            } else {
+                binding.breathBtn.setBackgroundResource(R.drawable.oval_button2)
+            }
+        }
+        binding.breathBtn.setOnTouchListener { v, event ->
+            when (event?.action) {
+                MotionEvent.ACTION_DOWN,
+                MotionEvent.ACTION_MOVE -> {
+                    v.setBackgroundResource(R.drawable.oval_button_white)
+                    (v as Button).setTextColor(
+                        ContextCompat.getColor(
+                            requireContext(),
+                            R.color.color4
+                        )
+                    )
+                }
+                MotionEvent.ACTION_UP -> {
+                    v.setBackgroundResource(R.drawable.oval_button2)
+                    (v as Button).setTextColor(
+                        ContextCompat.getColor(
+                            requireContext(),
+                            R.color.white
+                        )
+                    )
+                }
+            }
+
+            v?.onTouchEvent(event) ?: true
         }
 
         viewModel.curTimeBreath.observe(viewLifecycleOwner) {
@@ -156,7 +190,10 @@ class BreathFragment : Fragment(R.layout.fragment_breath) {
 //                    MediaControllerCompat.getMediaController(requireActivity()).transportControls.stop()
                     binding.toolbar.navigationIcon = null
                     viewModel.timer?.cancel()
-                    binding.breathBtn.text = getString(R.string.breathing)
+                    binding.apply {
+                        breathBtn.text = getString(R.string.breathing)
+                        breathContainer.setBackgroundResource(R.drawable.gradient_background)
+                    }
                     updateCountdownUI(it)
 
                 }
@@ -169,7 +206,11 @@ class BreathFragment : Fragment(R.layout.fragment_breath) {
                     }
                     binding.toolbar.setNavigationIcon(R.drawable.ic_icon_back)
                     binding.progressBar.max = viewModel.immutableParameters.timeTraining.toInt()
-                    binding.breathBtn.text = getString(R.string.stop_timer)
+                    binding.apply {
+                        breathBtn.text = getString(R.string.stop_timer)
+                        breathContainer.setBackgroundResource(R.drawable.gradient_background2)
+//                        breathContainer.background = R.drawable.gradient_background2.toDrawable()
+                    }
                     updateCountdownUI(it)
                 }
             }
@@ -178,7 +219,13 @@ class BreathFragment : Fragment(R.layout.fragment_breath) {
 
     override fun onStart() {
         super.onStart()
+        if (viewModel.curTimeBreath.value is TimerState.Started) {
+            binding.breathBtn.setBackgroundResource(R.drawable.oval_button2)
+        } else {
+            binding.breathBtn.setBackgroundResource(R.drawable.oval_button)
+        }
         mMediaBrowserCompat.connect()
+
     }
 
 
@@ -215,11 +262,11 @@ class BreathFragment : Fragment(R.layout.fragment_breath) {
     }
 
     @Synchronized
-    private fun openPicker(resValue: Int) {
+    private fun openPicker(resValue: Int, curValue: Int?) {
         try {
             findNavController().navigate(
                 R.id.action_breathFragment_to_pickerDialogFragment,
-                bundleOf(Pair(Constants.RESOURCE, resValue))
+                bundleOf(Pair(Constants.RESOURCE, resValue), Pair(ARG_STARTED, curValue))
             )
         } catch (e: IllegalArgumentException) {
 

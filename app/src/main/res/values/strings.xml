@@ -14,4 +14,43 @@
     <string name="relax">Расслабление</string>
     <string name="balance">Баланс</string>
     <string name="cheerfulness">Бодрость</string>
+    <string name="relax_text1">
+      Lorem ipsum dolor sit amet,<br/>
+        consectetur adipiscing elit, sed do<br/>
+        eiusmod tempor incididunt ut<br/>
+        labore et dolore magna aliqua.<br/>
+<br/>
+        Ut enim ad minim veniam, quis<br/>
+        nostrud exercitation ullamco<br/>
+        laboris nisi ut aliquip ex ea<br/>
+        commodo consequat.<br/>
+<br/>
+        Duis aute irure dolor in<br/>
+        reprehenderit in voluptate velit<br/>
+        esse cillum dolore eu fugiat nulla<br/>
+        pariatur.<br/>
+<br/>
+        Excepteur sint occaecat cupidatat<br/>
+        non proident, sunt in culpa qui<br/>
+        officia deserunt mollit anim id est<br/>
+        laborum.<br/>
+<br/>
+   </string>
+    <string name="recomendation_text">
+        Пожалуйста, будьте внимательны<br/>
+        к своему самочувствию. При<br/>
+        малейшем дискомфорте<br/>
+        остановите тренировку.<br/>
+        Проконсультируйтесь с лечащим<br/>
+        врачом.<br/>
+
+    </string>
+    <string name="Schemes">Схемы</string>
+    <string name="about_text1">Таймер предназначен для <br/> дыхательных тренировок.</string>
+    <string name="about_text2">Вы можете выставить<br/>  необходимые интервалы и задать<br/>  общее время тренировки. </string>
+    <string name="about_text3">Дополнительно можно добавить<br/>  звук метронома.</string>
+    <string name="about_text4">Можете выбрать схему дыхания<br/>  для Бодрости, Расслабления или<br/>  Баланса.</string>
+    <string name="about">Привет! меня зовут Родион.</string>
+
+
 </resources>

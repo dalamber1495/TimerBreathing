@@ -1,4 +1,4 @@
-package com.example.timerbreathing.presentation.fragments
+package com.example.timerbreathing.presentation.fragments.infoscreen.schemescreen
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment

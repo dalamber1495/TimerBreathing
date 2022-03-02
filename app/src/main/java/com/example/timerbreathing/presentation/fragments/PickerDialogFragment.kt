@@ -26,7 +26,7 @@ class PickerDialogFragment : DialogFragment(R.layout.fragment_picker_dialog) {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        //       dialog?.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+               dialog?.window?.setBackgroundDrawable(ColorDrawable(Color.parseColor("#99FFFFFF")))
         return super.onCreateView(inflater, container, savedInstanceState)
     }
 
@@ -38,6 +38,7 @@ class PickerDialogFragment : DialogFragment(R.layout.fragment_picker_dialog) {
         binding.apply {
             numberPicker.maxValue = 10
             numberPicker.minValue = 1
+            numberPicker.value = arguments?.getInt(ARG_STARTED)!!
             numberPicker.setOnValueChangedListener { _, _, i2 ->
                 viewModel.changeParameters(resValue, i2)
             }

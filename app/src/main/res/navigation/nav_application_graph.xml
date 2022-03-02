@@ -7,19 +7,34 @@
 
     <fragment
         android:id="@+id/aboutFragment"
-        android:name="com.example.timerbreathing.presentation.fragments.AboutFragment"
+        android:name="com.example.timerbreathing.presentation.fragments.infoscreen.AboutFragment"
         android:label="fragment_about"
-        tools:layout="@layout/fragment_about" />
+        tools:layout="@layout/fragment_about" >
+        <action
+            android:id="@+id/action_aboutFragment_to_breathFragment"
+            app:destination="@id/breathFragment" />
+    </fragment>
     <fragment
         android:id="@+id/aboutTimerFragment"
-        android:name="com.example.timerbreathing.presentation.fragments.AboutTimerFragment"
+        android:name="com.example.timerbreathing.presentation.fragments.infoscreen.AboutTimerFragment"
         android:label="fragment_about_timer"
-        tools:layout="@layout/fragment_about_timer" />
+        tools:layout="@layout/fragment_about_timer" >
+        <action
+            android:id="@+id/action_aboutTimerFragment_to_breathFragment"
+            app:destination="@id/breathFragment" />
+        <action
+            android:id="@+id/action_aboutTimerFragment_to_schemeBreathFragment"
+            app:destination="@id/schemeBreathFragment" />
+    </fragment>
     <fragment
         android:id="@+id/balanceFragment"
-        android:name="com.example.timerbreathing.presentation.fragments.BalanceFragment"
+        android:name="com.example.timerbreathing.presentation.fragments.infoscreen.schemescreen.BalanceFragment"
         android:label="fragment_balance"
-        tools:layout="@layout/fragment_balance" />
+        tools:layout="@layout/fragment_balance" >
+        <action
+            android:id="@+id/action_balanceFragment_to_breathFragment"
+            app:destination="@id/breathFragment" />
+    </fragment>
     <fragment
         android:id="@+id/breathFragment"
         android:name="com.example.timerbreathing.presentation.fragments.BreathFragment"
@@ -34,17 +49,25 @@
     </fragment>
     <fragment
         android:id="@+id/cheerfulnessFragment"
-        android:name="com.example.timerbreathing.presentation.fragments.CheerfulnessFragment"
+        android:name="com.example.timerbreathing.presentation.fragments.infoscreen.schemescreen.CheerfulnessFragment"
         android:label="fragment_cheerfulness"
-        tools:layout="@layout/fragment_cheerfulness" />
+        tools:layout="@layout/fragment_cheerfulness" >
+        <action
+            android:id="@+id/action_cheerfulnessFragment_to_breathFragment"
+            app:destination="@id/breathFragment" />
+    </fragment>
     <fragment
         android:id="@+id/recomendationsFragment"
-        android:name="com.example.timerbreathing.presentation.fragments.RecomendationsFragment"
+        android:name="com.example.timerbreathing.presentation.fragments.infoscreen.RecomendationsFragment"
         android:label="fragment_recomendations"
-        tools:layout="@layout/fragment_recomendations" />
+        tools:layout="@layout/fragment_recomendations" >
+        <action
+            android:id="@+id/action_recomendationsFragment_to_breathFragment"
+            app:destination="@id/breathFragment" />
+    </fragment>
     <fragment
         android:id="@+id/infoFragment"
-        android:name="com.example.timerbreathing.presentation.fragments.InfoFragment"
+        android:name="com.example.timerbreathing.presentation.fragments.infoscreen.InfoFragment"
         android:label="fragment_info"
         tools:layout="@layout/fragment_info">
         <action
@@ -62,12 +85,16 @@
     </fragment>
     <fragment
         android:id="@+id/relaxFragment"
-        android:name="com.example.timerbreathing.presentation.fragments.RelaxFragment"
+        android:name="com.example.timerbreathing.presentation.fragments.infoscreen.schemescreen.RelaxFragment"
         android:label="fragment_relax"
-        tools:layout="@layout/fragment_relax" />
+        tools:layout="@layout/fragment_relax" >
+        <action
+            android:id="@+id/action_relaxFragment_to_breathFragment"
+            app:destination="@id/breathFragment" />
+    </fragment>
     <fragment
         android:id="@+id/schemeBreathFragment"
-        android:name="com.example.timerbreathing.presentation.fragments.SchemeBreathFragment"
+        android:name="com.example.timerbreathing.presentation.fragments.infoscreen.schemescreen.SchemeBreathFragment"
         android:label="fragment_scheme_breath"
         tools:layout="@layout/fragment_scheme_breath">
         <action
