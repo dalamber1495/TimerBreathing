@@ -26,7 +26,7 @@ class PickerDialogFragment : DialogFragment(R.layout.fragment_picker_dialog) {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-               dialog?.window?.setBackgroundDrawable(ColorDrawable(Color.parseColor("#99FFFFFF")))
+        dialog?.window?.setBackgroundDrawable(ColorDrawable(Color.parseColor("#99FFFFFF")))
         return super.onCreateView(inflater, container, savedInstanceState)
     }
 
@@ -36,8 +36,11 @@ class PickerDialogFragment : DialogFragment(R.layout.fragment_picker_dialog) {
         val binding = FragmentPickerDialogBinding.bind(view)
         val resValue = arguments?.get(Constants.RESOURCE) as Int
         binding.apply {
+            if (resValue == R.id.time_exercise_tv)
+                numberPicker.minValue = 1
+            else
+                numberPicker.minValue = 0
             numberPicker.maxValue = 10
-            numberPicker.minValue = 1
             numberPicker.value = arguments?.getInt(ARG_STARTED)!!
             numberPicker.setOnValueChangedListener { _, _, i2 ->
                 viewModel.changeParameters(resValue, i2)

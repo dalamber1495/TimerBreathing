@@ -15,8 +15,6 @@ import javax.inject.Inject
 @HiltViewModel
 class MainViewModel @Inject constructor(private val useCase: ExerciseUseCase) : ViewModel() {
 
-    lateinit var userDataParameters: ExerciseParameters
-    val immutableParameters = useCase()
     private var timerState: TimerState = TimerState.Stopped()
     var timer: CountDownTimer? = null
     private val _curTimeBreath = MutableLiveData<TimerState>()
@@ -26,17 +24,18 @@ class MainViewModel @Inject constructor(private val useCase: ExerciseUseCase) : 
         _curTimeBreath.postValue(TimerState.Stopped(useCase()))
     }
 
+    fun getCurrentUserParameters() = ExerciseParameters(
+        useCase().timeTraining,
+        useCase().timeBreath,
+        useCase().timeExhalation,
+        useCase().timeBreathDelay,
+        useCase().timeExhalationDelay
+    )
+
     fun startTimer() {
-        userDataParameters = ExerciseParameters(
-            useCase().timeTraining,
-            useCase().timeBreath,
-            useCase().timeExhalation,
-            useCase().timeBreathDelay,
-            useCase().timeExhalationDelay
-        )
         when (_curTimeBreath.value) {
             is TimerState.Stopped -> {
-                timerState = TimerState.Started(userDataParameters)
+                timerState = TimerState.Started(getCurrentUserParameters())
                 timer = object : CountDownTimer(timerState.dataTime.timeTraining * 1000, 1000) {
                     override fun onTick(p0: Long) {
                         timerState.dataTime.timeTraining = p0 / 1000
@@ -58,6 +57,10 @@ class MainViewModel @Inject constructor(private val useCase: ExerciseUseCase) : 
     }
 
     private fun onParametersChange(p0: Long) {
+        useCase().apply {
+            if (timeBreath == 0L && timeBreathDelay == 0L && timeExhalation == 0L && timeExhalationDelay == 0L)
+                return
+        }
         timerState.dataTime.apply {
             if (timeBreath != 0L) {
                 timeBreath--
@@ -69,8 +72,8 @@ class MainViewModel @Inject constructor(private val useCase: ExerciseUseCase) : 
                 timeExhalationDelay--
             } else {
                 timeBreath = useCase().timeBreath
-                timeExhalation = useCase().timeBreathDelay
-                timeBreathDelay = useCase().timeExhalation
+                timeExhalation = useCase().timeExhalation
+                timeBreathDelay = useCase().timeBreathDelay
                 timeExhalationDelay = useCase().timeExhalationDelay
                 onParametersChange(p0)
             }

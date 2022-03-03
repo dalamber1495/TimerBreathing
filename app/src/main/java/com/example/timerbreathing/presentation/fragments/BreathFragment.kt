@@ -207,7 +207,7 @@ class BreathFragment : Fragment(R.layout.fragment_breath) {
                         )
                     }
                     binding.toolbar.setNavigationIcon(R.drawable.ic_icon_back)
-                    binding.progressBar.max = viewModel.immutableParameters.timeTraining.toInt()
+                    binding.progressBar.max = viewModel.getCurrentUserParameters().timeTraining.toInt()
                     binding.apply {
                         breathBtn.text = getString(R.string.stop_timer)
                         breathContainer.setBackgroundResource(R.drawable.gradient_background2)
@@ -236,6 +236,8 @@ class BreathFragment : Fragment(R.layout.fragment_breath) {
         val controllerCompat = MediaControllerCompat.getMediaController(requireActivity())
         controllerCompat?.unregisterCallback(mControllerCallback)
         mMediaBrowserCompat.disconnect()
+        if (viewModel.curTimeBreath.value is TimerState.Started) viewModel.startTimer()
+
     }
 
     private fun updateCountdownUI(timeState: TimerState) {
@@ -251,7 +253,7 @@ class BreathFragment : Fragment(R.layout.fragment_breath) {
             timeExhBtn.text = timeState.dataTime.timeExhalation.toString()
             timeWait2Btn.text = timeState.dataTime.timeExhalationDelay.toString()
             progressBar.progress =
-                (viewModel.immutableParameters.timeTraining - timeState.dataTime.timeTraining).toInt()
+                (viewModel.getCurrentUserParameters().timeTraining - timeState.dataTime.timeTraining).toInt()
             Log.e("TAG", "MAX: ${progressBar.max}")
             Log.e("TAG", "PROGRESS: ${progressBar.progress}")
 
