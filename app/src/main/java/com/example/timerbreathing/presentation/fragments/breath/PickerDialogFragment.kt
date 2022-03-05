@@ -1,10 +1,9 @@
-package com.example.timerbreathing.presentation.fragments
+package com.example.timerbreathing.presentation.fragments.breath
 
 import android.app.Dialog
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -12,23 +11,14 @@ import androidx.fragment.app.DialogFragment
 import androidx.lifecycle.ViewModelProvider
 import com.example.timerbreathing.R
 import com.example.timerbreathing.databinding.FragmentPickerDialogBinding
-import com.example.timerbreathing.other.Constants
+import com.example.timerbreathing.utils.Constants
 import com.example.timerbreathing.presentation.viewmodels.MainViewModel
+import com.example.timerbreathing.utils.Constants.ARG_STARTED
 import dagger.hilt.android.AndroidEntryPoint
 
 
 @AndroidEntryPoint
 class PickerDialogFragment : DialogFragment(R.layout.fragment_picker_dialog) {
-
-
-    override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        dialog?.window?.setBackgroundDrawable(ColorDrawable(Color.parseColor("#99FFFFFF")))
-        return super.onCreateView(inflater, container, savedInstanceState)
-    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         val viewModel = ViewModelProvider(requireActivity()).get(MainViewModel::class.java)
@@ -47,10 +37,5 @@ class PickerDialogFragment : DialogFragment(R.layout.fragment_picker_dialog) {
             }
 
         }
-    }
-
-
-    override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
-        return super.onCreateDialog(savedInstanceState)
     }
 }
