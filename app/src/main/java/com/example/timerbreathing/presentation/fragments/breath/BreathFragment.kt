@@ -35,7 +35,6 @@ class BreathFragment : Fragment(R.layout.fragment_breath) {
     private val connectionCallback: MediaBrowserCompat.ConnectionCallback =
         object : MediaBrowserCompat.ConnectionCallback() {
             override fun onConnected() {
-                // The browser connected to the session successfully, use the token to create the controller
                 super.onConnected()
                 mediaBrowserCompat.sessionToken.also { token ->
                     val mediaController = MediaControllerCompat(requireContext(), token)
@@ -67,9 +66,8 @@ class BreathFragment : Fragment(R.layout.fragment_breath) {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         val componentName = ComponentName(requireContext(), MusicService::class.java)
-        // initialize the browser
         mediaBrowserCompat = MediaBrowserCompat(
-            requireContext(), componentName, //Identifier for the service
+            requireContext(), componentName,
             connectionCallback,
             null
         )
