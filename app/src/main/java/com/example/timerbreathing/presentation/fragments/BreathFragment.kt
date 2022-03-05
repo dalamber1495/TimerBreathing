@@ -1,29 +1,41 @@
-package com.example.timerbreathing.presentation.fragments.breath
+package com.example.timerbreathing.presentation.fragments
 
 import android.annotation.SuppressLint
 import android.content.ComponentName
+import android.content.res.Resources
+import android.graphics.drawable.Drawable
 import android.net.Uri
 import android.os.Bundle
+import android.os.CountDownTimer
 import android.support.v4.media.MediaBrowserCompat
 import android.support.v4.media.session.MediaControllerCompat
+import android.support.v4.media.session.PlaybackStateCompat
 import android.util.Log
 import android.view.*
 import android.widget.Button
 import androidx.fragment.app.Fragment
+import android.widget.TextView
 import android.widget.Toast
+import android.widget.Toolbar
+import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
+import androidx.core.graphics.drawable.toDrawable
 import androidx.core.os.bundleOf
+import androidx.lifecycle.LifecycleOwner
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.Navigation
 import androidx.navigation.fragment.findNavController
 import com.example.timerbreathing.R
+import com.example.timerbreathing.data.ExerciseParameters
 import com.example.timerbreathing.databinding.FragmentBreathBinding
 import com.example.timerbreathing.exoplayer.MusicService
-import com.example.timerbreathing.utils.Constants
-import com.example.timerbreathing.data.TimerState
+import com.example.timerbreathing.other.Constants
+import com.example.timerbreathing.presentation.TimerState
 import com.example.timerbreathing.presentation.viewmodels.MainViewModel
-import com.example.timerbreathing.utils.Constants.ARG_STARTED
 import dagger.hilt.android.AndroidEntryPoint
 
+const val ARG_STARTED = "isStarted"
 
 @AndroidEntryPoint
 class BreathFragment : Fragment(R.layout.fragment_breath) {
@@ -31,13 +43,13 @@ class BreathFragment : Fragment(R.layout.fragment_breath) {
     private lateinit var viewModel: MainViewModel
     private lateinit var binding: FragmentBreathBinding
     private var metronomeActivate = false
-    private lateinit var mediaBrowserCompat: MediaBrowserCompat
+    private lateinit var mMediaBrowserCompat: MediaBrowserCompat
     private val connectionCallback: MediaBrowserCompat.ConnectionCallback =
         object : MediaBrowserCompat.ConnectionCallback() {
             override fun onConnected() {
                 // The browser connected to the session successfully, use the token to create the controller
                 super.onConnected()
-                mediaBrowserCompat.sessionToken.also { token ->
+                mMediaBrowserCompat.sessionToken.also { token ->
                     val mediaController = MediaControllerCompat(requireContext(), token)
                     MediaControllerCompat.setMediaController(requireActivity(), mediaController)
                 }
@@ -68,7 +80,7 @@ class BreathFragment : Fragment(R.layout.fragment_breath) {
         super.onCreate(savedInstanceState)
         val componentName = ComponentName(requireContext(), MusicService::class.java)
         // initialize the browser
-        mediaBrowserCompat = MediaBrowserCompat(
+        mMediaBrowserCompat = MediaBrowserCompat(
             requireContext(), componentName, //Identifier for the service
             connectionCallback,
             null
@@ -175,6 +187,7 @@ class BreathFragment : Fragment(R.layout.fragment_breath) {
         viewModel.curTimeBreath.observe(viewLifecycleOwner) {
             when (it) {
                 is TimerState.Stopped -> {
+//                    MediaControllerCompat.getMediaController(requireActivity()).transportControls.stop()
                     binding.toolbar.navigationIcon = null
                     viewModel.timer?.cancel()
                     binding.apply {
@@ -198,6 +211,7 @@ class BreathFragment : Fragment(R.layout.fragment_breath) {
                     binding.apply {
                         breathBtn.text = getString(R.string.stop_timer)
                         breathContainer.setBackgroundResource(R.drawable.gradient_background2)
+//                        breathContainer.background = R.drawable.gradient_background2.toDrawable()
                     }
                     updateCountdownUI(it)
                 }
@@ -207,7 +221,7 @@ class BreathFragment : Fragment(R.layout.fragment_breath) {
 
     override fun onStart() {
         super.onStart()
-        mediaBrowserCompat.connect()
+        mMediaBrowserCompat.connect()
 
     }
 
@@ -221,7 +235,7 @@ class BreathFragment : Fragment(R.layout.fragment_breath) {
         super.onStop()
         val controllerCompat = MediaControllerCompat.getMediaController(requireActivity())
         controllerCompat?.unregisterCallback(mControllerCallback)
-        mediaBrowserCompat.disconnect()
+        mMediaBrowserCompat.disconnect()
         if (viewModel.curTimeBreath.value is TimerState.Started) viewModel.startTimer()
 
     }
@@ -246,6 +260,7 @@ class BreathFragment : Fragment(R.layout.fragment_breath) {
         }
     }
 
+    @Synchronized
     private fun openPicker(resValue: Int, curValue: Int?) {
         try {
             findNavController().navigate(
