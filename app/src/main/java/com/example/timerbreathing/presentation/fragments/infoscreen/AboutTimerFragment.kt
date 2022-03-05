@@ -3,13 +3,9 @@ package com.example.timerbreathing.presentation.fragments.infoscreen
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.View
-import androidx.core.os.bundleOf
-import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.example.timerbreathing.R
 import com.example.timerbreathing.databinding.FragmentAboutTimerBinding
-import com.example.timerbreathing.presentation.fragments.ARG_STARTED
-import com.example.timerbreathing.presentation.viewmodels.MainViewModel
 
 class AboutTimerFragment : Fragment(R.layout.fragment_about_timer) {
     private lateinit var binding: FragmentAboutTimerBinding
