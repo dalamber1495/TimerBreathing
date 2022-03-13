@@ -11,8 +11,9 @@ import com.example.timerbreathing.R
 import com.example.timerbreathing.databinding.FragmentInfoBinding
 import com.example.timerbreathing.databinding.FragmentSchemeBreathBinding
 import com.example.timerbreathing.presentation.viewmodels.MainViewModel
+import dagger.hilt.android.AndroidEntryPoint
 
-
+@AndroidEntryPoint
 class SchemeBreathFragment : Fragment(R.layout.fragment_scheme_breath) {
 
     private lateinit var binding: FragmentSchemeBreathBinding
@@ -20,10 +21,18 @@ class SchemeBreathFragment : Fragment(R.layout.fragment_scheme_breath) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding = FragmentSchemeBreathBinding.bind(view)
-        binding.toolbar.setNavigationOnClickListener {findNavController().popBackStack() }
-        binding.balanceBtn.setOnClickListener { findNavController().navigate(R.id.action_schemeBreathFragment_to_balanceFragment) }
-        binding.relaxBtn.setOnClickListener { findNavController().navigate(R.id.action_schemeBreathFragment_to_relaxFragment) }
-        binding.cheerfulBtn.setOnClickListener { findNavController().navigate(R.id.action_schemeBreathFragment_to_cheerfulnessFragment) }
+        binding.toolbar.setNavigationOnClickListener {
+            findNavController().popBackStack()
+        }
+        binding.balanceBtn.setOnClickListener {
+            findNavController().navigate(R.id.action_schemeBreathFragment_to_balanceFragment)
+        }
+        binding.relaxBtn.setOnClickListener {
+            findNavController().navigate(R.id.action_schemeBreathFragment_to_relaxFragment)
+        }
+        binding.cheerfulBtn.setOnClickListener {
+            findNavController().navigate(R.id.action_schemeBreathFragment_to_cheerfulnessFragment)
+        }
 
     }
 }
