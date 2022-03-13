@@ -15,11 +15,14 @@ class BreathParametersRepository @Inject constructor(private val sharedPref: Sha
 
     fun getParameters(): ExerciseParameters =
         ExerciseParameters(
-            sharedPref.getLong("timeTraining", 60L),
-            sharedPref.getLong("timeBreath", 5L),
-            sharedPref.getLong("timeExhalation", 5L),
-            sharedPref.getLong("timeBreathDelay", 5L),
-            sharedPref.getLong("timeExhalationDelay", 5L)
+            sharedPref.getLong("timeTraining", SIXTY_SECONDS),
+            sharedPref.getLong("timeBreath", FIVE_SECONDS),
+            sharedPref.getLong("timeExhalation", FIVE_SECONDS),
+            sharedPref.getLong("timeBreathDelay", FIVE_SECONDS),
+            sharedPref.getLong("timeExhalationDelay", FIVE_SECONDS)
         )
-
+    companion object{
+        const val SIXTY_SECONDS = 60L
+        const val FIVE_SECONDS = 5L
+    }
 }

@@ -8,7 +8,9 @@ import androidx.navigation.fragment.findNavController
 import com.example.timerbreathing.R
 import com.example.timerbreathing.databinding.FragmentCheerfulnessBinding
 import com.example.timerbreathing.presentation.viewmodels.MainViewModel
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class CheerfulnessFragment : Fragment(R.layout.fragment_cheerfulness) {
     private lateinit var binding: FragmentCheerfulnessBinding
 

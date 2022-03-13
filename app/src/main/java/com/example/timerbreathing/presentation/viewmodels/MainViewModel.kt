@@ -12,7 +12,9 @@ import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 
 @HiltViewModel
-class MainViewModel @Inject constructor(private val breathParametersRepository: BreathParametersRepository) : ViewModel() {
+class MainViewModel @Inject constructor(
+    private val breathParametersRepository: BreathParametersRepository
+    ) : ViewModel() {
 
     private var timerState: TimerState = TimerState.Stopped(breathParametersRepository.getParameters())
     var timer: CountDownTimer? = null
@@ -29,9 +31,9 @@ class MainViewModel @Inject constructor(private val breathParametersRepository: 
         when (_curTimeBreath.value) {
             is TimerState.Stopped -> {
                 timerState = TimerState.Started(breathParametersRepository.getParameters())
-                timer = object : CountDownTimer(timerState.dataTime.timeTraining * 1000, 1000) {
+                timer = object : CountDownTimer(timerState.dataTime.timeTraining * ONE_SECOND, ONE_SECOND.toLong()) {
                     override fun onTick(p0: Long) {
-                        timerState.dataTime.timeTraining = p0 / 1000
+                        timerState.dataTime.timeTraining = p0 / ONE_SECOND
                         onParametersChange(p0)
                         _curTimeBreath.postValue(timerState)
                     }
@@ -61,7 +63,7 @@ class MainViewModel @Inject constructor(private val breathParametersRepository: 
                 timeBreathDelay--
             } else if (timeBreath == 0L && timeBreathDelay == 0L && timeExhalation != 0L) {
                 timeExhalation--
-            } else if (timeBreath == 0L && timeBreathDelay == 0L && timeExhalation == 0L && timeExhalationDelay != 0L) {
+            } else if (timeBreath == 0L && timeBreathDelay == 0L && timeExhalation == 0L) {
                 timeExhalationDelay--
             } else {
                 timeBreath = breathParametersRepository.getParameters().timeBreath
@@ -81,7 +83,7 @@ class MainViewModel @Inject constructor(private val breathParametersRepository: 
     fun changeParameters(resValue: Int, newValue: Int) {
         when (resValue) {
             R.id.time_exercise_tv -> {
-                breathParametersRepository.setTimeTraining(newValue.toLong()*60)
+                breathParametersRepository.setTimeTraining(newValue.toLong()* ONE_MINUTE)
             }
             R.id.time_breath_btn -> {
                 breathParametersRepository.setTimeBreath(newValue.toLong())
@@ -98,5 +100,9 @@ class MainViewModel @Inject constructor(private val breathParametersRepository: 
         }
         _curTimeBreath.postValue(TimerState.Stopped(breathParametersRepository.getParameters()))
 
+    }
+    companion object{
+        const val ONE_SECOND = 1000
+        const val ONE_MINUTE = 60
     }
 }

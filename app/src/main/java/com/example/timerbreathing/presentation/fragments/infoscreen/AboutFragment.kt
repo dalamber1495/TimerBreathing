@@ -3,12 +3,15 @@ package com.example.timerbreathing.presentation.fragments.infoscreen
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.View
+import androidx.activity.OnBackPressedCallback
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.example.timerbreathing.R
 import com.example.timerbreathing.databinding.FragmentAboutBinding
 import com.example.timerbreathing.presentation.viewmodels.MainViewModel
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class AboutFragment : Fragment(R.layout.fragment_about) {
     private lateinit var binding: FragmentAboutBinding
 
@@ -18,5 +21,12 @@ class AboutFragment : Fragment(R.layout.fragment_about) {
         binding.toolbar.setNavigationOnClickListener {findNavController().popBackStack() }
         binding.relaxBtn.setOnClickListener {
             findNavController().navigate(R.id.action_aboutFragment_to_breathFragment) }
+        val callback = object : OnBackPressedCallback(true){
+            override fun handleOnBackPressed() {
+                findNavController().popBackStack()
+            }
+        }
+        requireActivity().onBackPressedDispatcher.addCallback(callback)
     }
+
 }

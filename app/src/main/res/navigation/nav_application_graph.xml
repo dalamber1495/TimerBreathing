@@ -9,6 +9,7 @@
         android:id="@+id/breathFragment"
         android:name="com.example.timerbreathing.presentation.fragments.breath.BreathFragment"
         android:label="fragment_breath"
+
         tools:layout="@layout/fragment_breath">
         <action
             android:id="@+id/action_breathFragment_to_infoFragment"
