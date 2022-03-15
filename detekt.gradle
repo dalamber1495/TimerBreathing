@@ -1,0 +1,52 @@
+
+
+//detekt {
+//
+//    parallel = true
+//
+//    input = files("src/main/java")
+//    config = files("$rootDir/detekt_config.yml")
+//    baseline = file("$projectDir/detekt/baseline.xml")
+//
+//    reports {
+//        xml {
+//            enabled = true
+//            destination = file("$projectDir/detekt/detekt.xml")
+//        }
+//        html {
+//            enabled = true
+//            destination = file("$projectDir/detekt/detekt.html")
+//        }
+//    }
+//}
+detekt {
+    toolVersion = "1.20.0-RC1"
+
+    source = files(
+            "src/main/java",
+//            "gensrc/main/kotlin"
+    )
+    parallel = true
+    config = files("$rootDir/detekt-config.yml")
+    buildUponDefaultConfig = false
+    allRules = false
+    baseline = file("$projectDir/detekt/baseline.xml")
+    disableDefaultRuleSets = false
+    debug = false
+    ignoreFailures = false
+    ignoredBuildTypes = ["release"]
+    ignoredFlavors = ["production"]
+    ignoredVariants = ["productionRelease"]
+    basePath = projectDir
+}
+//detekt {
+//    toolVersion = "1.20.0-RC1"
+//    // Version of the Detekt CLI that will be used. When unspecified the latest detekt version found will be used. Override to stay on the same version.
+//    source = files("src/main/java")
+//    // The directories where detekt looks for input files. Defaults to `files("src/main/java", "src/main/kotlin")`.
+//    parallel = true
+//    // Builds the AST in parallel. Rules are always executed in parallel. Can lead to speedups in larger projects. `false` by default.
+//    config = files("$rootDir/detekt_config.yml")
+//    // Define the detekt configuration(s) you want to use. Defaults to the default detekt configuration.
+//
+//}
