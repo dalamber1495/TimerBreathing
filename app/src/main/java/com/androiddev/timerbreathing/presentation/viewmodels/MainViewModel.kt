@@ -66,7 +66,7 @@ class MainViewModel @Inject constructor(
                 timeBreathDelay--
             } else if (timeBreath == 0L && timeBreathDelay == 0L && timeExhalation != 0L) {
                 timeExhalation--
-            } else if (timeBreath == 0L && timeBreathDelay == 0L && timeExhalation == 0L) {
+            } else if (timeBreath == 0L && timeBreathDelay == 0L && timeExhalation == 0L && timeExhalationDelay != 0L) {
                 timeExhalationDelay--
             } else {
                 timeBreath = breathParametersRepository.getParameters().timeBreath
