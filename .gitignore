@@ -1,6 +1,7 @@
 *.iml
 .gradle
 /local.properties
+/keystore.properties
 /.idea/caches
 /.idea/libraries
 /.idea/modules.xml
@@ -13,3 +14,5 @@
 .externalNativeBuild
 .cxx
 local.properties
+keystore.properties
+/app/pc-api-8558264435046456162-722-0722d187d4a5.json

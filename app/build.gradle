@@ -1,28 +1,38 @@
 plugins {
     id 'com.android.application'
     id 'kotlin-android'
+    id "com.github.triplet.play"
     id 'kotlin-kapt'
     id 'dagger.hilt.android.plugin'
 }
 apply plugin: "io.gitlab.arturbosch.detekt"
 
 android {
+    signingConfigs {
+        debug {
+            storeFile file('storePath')
+            keyAlias 'keyAlias'
+            storePassword 'storePassword'
+            keyPassword 'keyPassword'
+        }
+    }
     compileSdk 31
 
     defaultConfig {
-        applicationId "com.example.timerbreathing"
+        applicationId "com.androiddev.timerbreathing"
         minSdk 22
         targetSdk 31
-        versionCode 1
-        versionName "1.0"
+        versionCode 2
+        versionName "1.1"
         vectorDrawables.useSupportLibrary = true
-        testInstrumentationRunner "com.example.timerbreathing.HiltTestRunner"
+        testInstrumentationRunner "com.androiddev.timerbreathing.HiltTestRunner"
     }
 
     buildTypes {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.debug
         }
     }
     buildFeatures {
@@ -40,6 +50,10 @@ android {
     kotlinOptions {
         jvmTarget = '1.8'
     }
+}
+play {
+    serviceAccountCredentials.set(file('pc-api-8558264435046456162-722-0722d187d4a5.json'))
+    track.set("internal")
 }
 kapt {
     generateStubs = true
