@@ -1,3 +1,4 @@
+
 plugins {
     id 'com.android.application'
     id 'kotlin-android'
@@ -9,11 +10,17 @@ apply plugin: "io.gitlab.arturbosch.detekt"
 
 android {
     signingConfigs {
-        debug {
-            storeFile file('storePath')
-            keyAlias 'keyAlias'
-            storePassword 'storePassword'
-            keyPassword 'keyPassword'
+        release {
+            storeFile file(STORE_PATH)
+            keyAlias KEY_ALIAS
+            storePassword STORE_PASSWORD
+            keyPassword KEY_PASSWORD
+        }
+        debug{
+                storeFile file(STORE_PATH)
+                keyAlias KEY_ALIAS
+                storePassword STORE_PASSWORD
+                keyPassword KEY_PASSWORD
         }
     }
     compileSdk 31
@@ -51,9 +58,14 @@ android {
         jvmTarget = '1.8'
     }
 }
+
 play {
-    serviceAccountCredentials.set(file('pc-api-8558264435046456162-722-0722d187d4a5.json'))
+    serviceAccountCredentials.set(file(JSON_PATH))
+    defaultToAppBundles.set(true)
     track.set("internal")
+    releaseStatus.set(com.github.triplet.gradle.androidpublisher.ReleaseStatus.DRAFT)
+    resolutionStrategy.set(com.github.triplet.gradle.androidpublisher.ResolutionStrategy.IGNORE)
+
 }
 kapt {
     generateStubs = true
