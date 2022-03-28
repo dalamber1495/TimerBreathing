@@ -18,13 +18,7 @@ class AboutFragment : Fragment(R.layout.fragment_about) {
         binding = FragmentAboutBinding.bind(view)
         binding.toolbar.setNavigationOnClickListener {findNavController().popBackStack() }
         binding.relaxBtn.setOnClickListener {
-            findNavController().navigate(R.id.action_aboutFragment_to_breathFragment) }
-        val callback = object : OnBackPressedCallback(true){
-            override fun handleOnBackPressed() {
-                findNavController().popBackStack()
-            }
-        }
-        requireActivity().onBackPressedDispatcher.addCallback(callback)
+            findNavController().popBackStack(R.id.breathFragment,true) }
     }
 
 }
