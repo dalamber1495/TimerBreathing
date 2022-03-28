@@ -33,12 +33,6 @@ class InfoFragment : Fragment(R.layout.fragment_info) {
         binding.aboutTmr.setOnClickListener {
             findNavController().navigate(R.id.action_infoFragment_to_aboutTimerFragment)
         }
-        val callback = object : OnBackPressedCallback(true){
-            override fun handleOnBackPressed() {
-                findNavController().popBackStack()
-            }
-        }
-        requireActivity().onBackPressedDispatcher.addCallback(callback)
     }
 }
 

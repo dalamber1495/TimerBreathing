@@ -49,9 +49,6 @@
             android:label="fragment_about_timer"
             tools:layout="@layout/fragment_about_timer">
             <action
-                android:id="@+id/action_aboutTimerFragment_to_breathFragment"
-                app:destination="@id/breathFragment" />
-            <action
                 android:id="@+id/action_aboutTimerFragment_to_schemeBreathFragment"
                 app:destination="@id/navigation" />
         </fragment>
@@ -59,20 +56,12 @@
             android:id="@+id/recomendationsFragment"
             android:name="com.androiddev.timerbreathing.presentation.fragments.infoscreen.RecomendationsFragment"
             android:label="fragment_recomendations"
-            tools:layout="@layout/fragment_recomendations">
-            <action
-                android:id="@+id/action_recomendationsFragment_to_breathFragment"
-                app:destination="@id/breathFragment" />
-        </fragment>
+            tools:layout="@layout/fragment_recomendations"/>
         <fragment
             android:id="@+id/aboutFragment"
             android:name="com.androiddev.timerbreathing.presentation.fragments.infoscreen.AboutFragment"
             android:label="fragment_about"
-            tools:layout="@layout/fragment_about">
-            <action
-                android:id="@+id/action_aboutFragment_to_breathFragment"
-                app:destination="@id/breathFragment" />
-        </fragment>
+            tools:layout="@layout/fragment_about"/>
         <navigation
             android:id="@+id/navigation"
             app:startDestination="@id/schemeBreathFragment">
@@ -95,29 +84,17 @@
                 android:id="@+id/balanceFragment"
                 android:name="com.androiddev.timerbreathing.presentation.fragments.infoscreen.schemescreen.BalanceFragment"
                 android:label="fragment_balance"
-                tools:layout="@layout/fragment_balance">
-                <action
-                    android:id="@+id/action_balanceFragment_to_breathFragment"
-                    app:destination="@id/breathFragment" />
-            </fragment>
+                tools:layout="@layout/fragment_balance"/>
             <fragment
                 android:id="@+id/relaxFragment"
                 android:name="com.androiddev.timerbreathing.presentation.fragments.infoscreen.schemescreen.RelaxFragment"
                 android:label="fragment_relax"
-                tools:layout="@layout/fragment_relax">
-                <action
-                    android:id="@+id/action_relaxFragment_to_breathFragment"
-                    app:destination="@id/breathFragment" />
-            </fragment>
+                tools:layout="@layout/fragment_relax"/>
             <fragment
                 android:id="@+id/cheerfulnessFragment"
                 android:name="com.androiddev.timerbreathing.presentation.fragments.infoscreen.schemescreen.CheerfulnessFragment"
                 android:label="fragment_cheerfulness"
-                tools:layout="@layout/fragment_cheerfulness">
-                <action
-                    android:id="@+id/action_cheerfulnessFragment_to_breathFragment"
-                    app:destination="@id/breathFragment" />
-            </fragment>
+                tools:layout="@layout/fragment_cheerfulness"/>
         </navigation>
     </navigation>
 
