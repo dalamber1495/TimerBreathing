@@ -19,7 +19,7 @@ class AboutTimerFragment : Fragment(R.layout.fragment_about_timer) {
             findNavController().popBackStack()
         }
         binding.relaxBtn.setOnClickListener {
-            findNavController().popBackStack(R.id.breathFragment,true)
+            findNavController().popBackStack(R.id.breathFragment,false)
         }
         binding.schemeBtn.setOnClickListener {
             findNavController().navigate(R.id.action_aboutTimerFragment_to_schemeBreathFragment)

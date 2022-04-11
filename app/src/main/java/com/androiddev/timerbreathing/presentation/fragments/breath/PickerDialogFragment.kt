@@ -2,6 +2,7 @@ package com.androiddev.timerbreathing.presentation.fragments.breath
 
 import android.os.Bundle
 import android.view.View
+import androidx.appcompat.app.AppCompatDelegate
 import androidx.fragment.app.DialogFragment
 import androidx.lifecycle.ViewModelProvider
 import com.androiddev.timerbreathing.R
@@ -15,6 +16,10 @@ import dagger.hilt.android.AndroidEntryPoint
 @AndroidEntryPoint
 class PickerDialogFragment : DialogFragment(R.layout.fragment_picker_dialog) {
 
+    override fun onCreate(savedInstanceState: Bundle?) {
+            super.onCreate(savedInstanceState)
+        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
+    }
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         val viewModel = ViewModelProvider(requireActivity()).get(MainViewModel::class.java)
         super.onViewCreated(view, savedInstanceState)

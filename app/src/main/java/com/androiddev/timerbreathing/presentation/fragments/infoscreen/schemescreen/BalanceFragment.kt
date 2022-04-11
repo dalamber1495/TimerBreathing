@@ -17,6 +17,6 @@ class BalanceFragment : Fragment(R.layout.fragment_balance) {
         binding = FragmentBalanceBinding.bind(view)
         binding.toolbar.setNavigationOnClickListener {findNavController().popBackStack() }
         binding.relaxBtn.setOnClickListener {
-            findNavController().popBackStack(R.id.breathFragment,true) }
+            findNavController().popBackStack(R.id.breathFragment,false) }
     }
 }
