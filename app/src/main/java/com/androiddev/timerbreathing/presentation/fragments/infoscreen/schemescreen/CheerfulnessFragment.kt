@@ -17,6 +17,6 @@ class CheerfulnessFragment : Fragment(R.layout.fragment_cheerfulness) {
         binding = FragmentCheerfulnessBinding.bind(view)
         binding.toolbar.setNavigationOnClickListener {findNavController().popBackStack() }
         binding.relaxBtn.setOnClickListener {
-            findNavController().popBackStack(R.id.breathFragment,true) }
+            findNavController().popBackStack(R.id.breathFragment,false) }
     }
 }

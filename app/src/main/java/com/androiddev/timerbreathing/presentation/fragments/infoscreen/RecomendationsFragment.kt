@@ -19,6 +19,6 @@ class RecomendationsFragment : Fragment(R.layout.fragment_recomendations) {
             findNavController().popBackStack()
         }
         binding.relaxBtn.setOnClickListener {
-            findNavController().popBackStack(R.id.breathFragment,true) }
+            findNavController().popBackStack(R.id.breathFragment,false) }
     }
 }
