@@ -49,10 +49,11 @@
 
     <TextView
         android:id="@+id/relax_text_tv"
-        android:layout_width="325dp"
+        android:layout_width="300dp"
+        app:layout_constraintVertical_bias="0.2"
         android:layout_height="wrap_content"
         android:layout_marginTop="25dp"
-        style="@style/TextStyleRelax"
+        style="@style/TextStyleScheme"
         android:text="@string/relax_text1"
         app:layout_constraintTop_toBottomOf="@id/relax_tv"
         app:layout_constraintLeft_toLeftOf="@id/relax_tv"

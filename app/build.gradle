@@ -62,9 +62,9 @@ android {
 play {
     serviceAccountCredentials.set(file(JSON_PATH))
     defaultToAppBundles.set(true)
-    releaseName.set("it is from GPP")
-    track.set("internal")
-    releaseStatus.set(com.github.triplet.gradle.androidpublisher.ReleaseStatus.DRAFT)
+    releaseName.set("Release")
+    track.set("production")
+    releaseStatus.set(com.github.triplet.gradle.androidpublisher.ReleaseStatus.COMPLETED)
     resolutionStrategy.set(com.github.triplet.gradle.androidpublisher.ResolutionStrategy.IGNORE)
 
 }
