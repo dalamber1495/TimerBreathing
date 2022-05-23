@@ -26,6 +26,7 @@ import com.androiddev.timerbreathing.presentation.viewmodels.MainViewModel.Compa
 import com.androiddev.timerbreathing.utils.Constants.ARG_STARTED
 import dagger.hilt.android.AndroidEntryPoint
 import java.lang.IllegalArgumentException
+import kotlin.jvm.Throws
 
 
 @AndroidEntryPoint
@@ -250,6 +251,7 @@ class BreathFragment : Fragment(R.layout.fragment_breath) {
                 bundleOf(Pair(Constants.RESOURCE, resValue), Pair(ARG_STARTED, curValue))
             )
         } catch (e: IllegalArgumentException) {
+            Log.e("TAG", "openPicker: ${e.stackTrace}", )
             return
         }
 

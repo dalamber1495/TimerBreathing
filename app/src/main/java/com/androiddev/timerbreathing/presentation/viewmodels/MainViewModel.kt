@@ -56,24 +56,31 @@ class MainViewModel @Inject constructor(
 
     private fun onParametersChange(p0: Long) {
         breathParametersRepository.getParameters().apply {
-            if (timeBreath == 0L && timeBreathDelay == 0L && timeExhalation == 0L && timeExhalationDelay == 0L)
-                return
+            when {
+                timeBreath == 0L && timeBreathDelay == 0L && timeExhalation == 0L && timeExhalationDelay == 0L -> return
+            }
         }
         timerState.dataTime.apply {
-            if (timeBreath != 0L) {
-                timeBreath--
-            } else if (timeBreath == 0L && timeBreathDelay != 0L) {
-                timeBreathDelay--
-            } else if (timeBreath == 0L && timeBreathDelay == 0L && timeExhalation != 0L) {
-                timeExhalation--
-            } else if (timeBreath == 0L && timeBreathDelay == 0L && timeExhalation == 0L && timeExhalationDelay != 0L) {
-                timeExhalationDelay--
-            } else {
-                timeBreath = breathParametersRepository.getParameters().timeBreath
-                timeExhalation = breathParametersRepository.getParameters().timeExhalation
-                timeBreathDelay = breathParametersRepository.getParameters().timeBreathDelay
-                timeExhalationDelay = breathParametersRepository.getParameters().timeExhalationDelay
-                onParametersChange(p0)
+            when {
+                timeBreath != 0L -> {
+                    timeBreath--
+                }
+                timeBreath == 0L && timeBreathDelay != 0L -> {
+                    timeBreathDelay--
+                }
+                timeBreath == 0L && timeBreathDelay == 0L && timeExhalation != 0L -> {
+                    timeExhalation--
+                }
+                timeBreath == 0L && timeBreathDelay == 0L && timeExhalation == 0L && timeExhalationDelay != 0L -> {
+                    timeExhalationDelay--
+                }
+                else -> {
+                    timeBreath = breathParametersRepository.getParameters().timeBreath
+                    timeExhalation = breathParametersRepository.getParameters().timeExhalation
+                    timeBreathDelay = breathParametersRepository.getParameters().timeBreathDelay
+                    timeExhalationDelay = breathParametersRepository.getParameters().timeExhalationDelay
+                    onParametersChange(p0)
+                }
             }
         }
     }

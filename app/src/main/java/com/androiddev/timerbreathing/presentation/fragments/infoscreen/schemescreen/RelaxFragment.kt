@@ -17,7 +17,7 @@ class RelaxFragment : Fragment(R.layout.fragment_relax) {
         binding = FragmentRelaxBinding.bind(view)
         binding.toolbar.setNavigationOnClickListener {findNavController().popBackStack() }
         binding.relaxBtn.setOnClickListener {
-            findNavController().navigate(R.id.action_relaxFragment_to_breathFragment) }
+            findNavController().popBackStack(R.id.breathFragment,false) }
     }
 
 }

@@ -15,41 +15,44 @@
     <string name="balance">Баланс</string>
     <string name="cheerfulness">Бодрость</string>
     <string name="relax_text1">
-      Lorem ipsum dolor sit amet,<br/>
-        consectetur adipiscing elit, sed do<br/>
-        eiusmod tempor incididunt ut<br/>
-        labore et dolore magna aliqua.<br/>
-<br/>
-        Ut enim ad minim veniam, quis<br/>
-        nostrud exercitation ullamco<br/>
-        laboris nisi ut aliquip ex ea<br/>
-        commodo consequat.<br/>
-<br/>
-        Duis aute irure dolor in<br/>
-        reprehenderit in voluptate velit<br/>
-        esse cillum dolore eu fugiat nulla<br/>
-        pariatur.<br/>
-<br/>
-        Excepteur sint occaecat cupidatat<br/>
-        non proident, sunt in culpa qui<br/>
-        officia deserunt mollit anim id est<br/>
-        laborum.<br/>
-<br/>
-   </string>
+        \n
+        1. Вдох короче выдоха.\n
+ 2. Задержка после вдоха отсутствует.\n
+ 3. Выдох длиннее или равен вдоху.\n
+ 4. Задержка после выдоха есть.\n
+ Примеры: 4-0-4-4, 4-0-6-4.
+    </string>
+    <string name="balance_text">
+        \n
+        1. Вдох равен выдоху.\n
+2. Задержка после вдоха отсутствует или равна задержке после выдоха.\n
+3. Выдох равен вдоху.\n
+4. Задержка после выдоха равна задержке после вдоха.\n
+Примеры: 4-4-4-4, 4-0-4-0.
+    </string>
+    
+    <string name="cheerfulness_text">
+        \n
+1. Вдох длинее или равен выдоху.\n
+2. Задержка после вдоха есть.\n
+3. Выдох не длиннее вдоха.\n
+4. Задержка после выдоха отсутствует.\n
+Примеры: 4-4-4-0, 6-4-4-0.
+    </string>
     <string name="recomendation_text">
-        Пожалуйста, будьте внимательны<br/>
-        к своему самочувствию. При<br/>
-        малейшем дискомфорте<br/>
-        остановите тренировку.<br/>
-        Проконсультируйтесь с лечащим<br/>
-        врачом.<br/>
+        Пожалуйста, будьте внимательны<br />
+        к своему самочувствию. При<br />
+        малейшем дискомфорте<br />
+        остановите тренировку.<br />
+        Проконсультируйтесь с лечащим<br />
+        врачом.<br />
 
     </string>
     <string name="Schemes">Схемы</string>
-    <string name="about_text1">Таймер предназначен для <br/> дыхательных тренировок.</string>
-    <string name="about_text2">Вы можете выставить<br/>  необходимые интервалы и задать<br/>  общее время тренировки. </string>
-    <string name="about_text3">Дополнительно можно добавить<br/>  звук метронома.</string>
-    <string name="about_text4">Можете выбрать схему дыхания<br/>  для Бодрости, Расслабления или<br/>  Баланса.</string>
+    <string name="about_text1">Таймер предназначен для <br /> дыхательных тренировок.</string>
+    <string name="about_text2">Вы можете выставить<br />  необходимые интервалы и задать<br />  общее время тренировки. </string>
+    <string name="about_text3">Дополнительно можно добавить<br />  звук метронома.</string>
+    <string name="about_text4">Можете выбрать схему дыхания<br />  для Бодрости, Расслабления или<br />  Баланса.</string>
     <string name="about">Привет! меня зовут Родион.</string>
 
 

@@ -1,28 +1,45 @@
+
 plugins {
     id 'com.android.application'
     id 'kotlin-android'
+    id "com.github.triplet.play"
     id 'kotlin-kapt'
     id 'dagger.hilt.android.plugin'
 }
 apply plugin: "io.gitlab.arturbosch.detekt"
 
 android {
+    signingConfigs {
+        release {
+            storeFile file(STORE_PATH)
+            keyAlias KEY_ALIAS
+            storePassword STORE_PASSWORD
+            keyPassword KEY_PASSWORD
+        }
+        debug{
+                storeFile file(STORE_PATH)
+                keyAlias KEY_ALIAS
+                storePassword STORE_PASSWORD
+                keyPassword KEY_PASSWORD
+        }
+    }
     compileSdk 31
 
     defaultConfig {
-        applicationId "com.example.timerbreathing"
+        applicationId "com.androiddev.timerbreathing"
         minSdk 22
         targetSdk 31
-        versionCode 1
-        versionName "1.0"
+        versionCode 5
+        versionName "1.22"
         vectorDrawables.useSupportLibrary = true
-        testInstrumentationRunner "com.example.timerbreathing.HiltTestRunner"
+        testInstrumentationRunner "com.androiddev.timerbreathing.HiltTestRunner"
     }
 
     buildTypes {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.debug
         }
     }
     buildFeatures {
@@ -41,6 +58,17 @@ android {
         jvmTarget = '1.8'
     }
 }
+
+play {
+    serviceAccountCredentials.set(file(JSON_PATH))
+    defaultToAppBundles.set(true)
+    releaseName.set("Release")
+    track.set("beta")
+    userFraction.set(0.5D)
+    releaseStatus.set(com.github.triplet.gradle.androidpublisher.ReleaseStatus.IN_PROGRESS)
+    resolutionStrategy.set(com.github.triplet.gradle.androidpublisher.ResolutionStrategy.IGNORE)
+
+}
 kapt {
     generateStubs = true
 }
@@ -58,13 +86,9 @@ dependencies {
 
     def coroutinesVersion = '1.4.3'
     def lifeCycleVersion = '2.4.0'
-    def daggerHiltVersion = '2.31.2-alpha'
-    def hiltLifeCycleVersion = '1.0.0-alpha03'
-
     implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
     implementation 'androidx.core:core-ktx:1.7.0'
 
-    def nav_version = "2.3.5"
 
     // Kotlin
     implementation "androidx.navigation:navigation-fragment-ktx:2.4.1"
