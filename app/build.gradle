@@ -29,8 +29,8 @@ android {
         applicationId "com.androiddev.timerbreathing"
         minSdk 22
         targetSdk 31
-        versionCode 4
-        versionName "1.21"
+        versionCode 5
+        versionName "1.22"
         vectorDrawables.useSupportLibrary = true
         testInstrumentationRunner "com.androiddev.timerbreathing.HiltTestRunner"
     }
@@ -63,8 +63,9 @@ play {
     serviceAccountCredentials.set(file(JSON_PATH))
     defaultToAppBundles.set(true)
     releaseName.set("Release")
-    track.set("production")
-    releaseStatus.set(com.github.triplet.gradle.androidpublisher.ReleaseStatus.COMPLETED)
+    track.set("beta")
+    userFraction.set(0.5D)
+    releaseStatus.set(com.github.triplet.gradle.androidpublisher.ReleaseStatus.IN_PROGRESS)
     resolutionStrategy.set(com.github.triplet.gradle.androidpublisher.ResolutionStrategy.IGNORE)
 
 }
